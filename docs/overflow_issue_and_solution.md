@@ -1,4 +1,4 @@
-# NodeJS: Schedule callback function with a large delay
+# NodeJS: Schedule callback function exceeding the maximum allowed delay.
 
 ## setTimeout(): The task scheduler in NodeJS
 
@@ -58,9 +58,9 @@ setTimeout(() => {
 
 ## A solution to the maximum delay limit
 
-I recently wrote a Typescript library to abstract away the complication of managing those unschedulable tasks. The library [__Node-Jobs__](http://github./com) features a scheduler that provides an easy way to manage scheduling tasks with delays not bounded by the limit imposed by `setTimeout()`. The scheduler also acts as a center store for hosting the tasks and provides an unified suite of APIs to programmers. The scheduler exposes APIs with more descriptive function names such as `schedule_in_milisec()`, `schedule_in_secs()`, and `schedule_at_date()` for the convenience of the users. When users trying to schedule tasks that exceed the maxium delay, the tasks will be put onto the scheduler's internal `pending_queue` until they become schedulable to be enqueued in Node's timer queue. The scheduler also provides a way for users to remove the tasks already in Node's timer queue or those still not schedulable (i.e. in the `pending_queue`). The details of handling all these mundane operations are hidden from the users of the library.
+I recently wrote a Typescript library to abstract away the complication of managing those unschedulable tasks. The library [__node-jobs-scheduler__](https://www.npmjs.com/package/node-jobs-scheduler) features a scheduler that provides an easy way to manage scheduling tasks with delays not bounded by the limit imposed by `setTimeout()`. The scheduler also acts as a center store for hosting the tasks and provides an unified suite of APIs to programmers. The scheduler exposes APIs with more descriptive function names such as `schedule_in_milisec()`, `schedule_in_secs()`, and `schedule_at_date()` for the convenience of the users. When users trying to schedule tasks that exceed the maxium delay, the tasks will be put onto the scheduler's internal `pending_queue` until they become schedulable to be enqueued in Node's timer queue. The scheduler also provides a way for users to remove the tasks already in Node's timer queue or those still not schedulable (i.e. in the `pending_queue`). The details of handling all these mundane operations are hidden from the users of the library.
 
-## Using the Node-Jobs scheduler
+## Using the node-jobs-scheduler
 
 The library contains `class Scheduler` in `Scheduler.ts` which wraps the above-mentioned functionalities under one roof. In most cases, I presume only one instance of `class Scheduler` should be initialized. But in a multi-user application where each user is given his/her own unique scheduler, constructing more than one instance might be appropriate as long as the application does not mix up all those scheduler instances. The initialization can be done when the Node runtime starts up. For example, many Node applications will define either a `server.ts` or `server.js` to service HTTP requests from the client. The scheduler can be constructed by code similar to the following
 

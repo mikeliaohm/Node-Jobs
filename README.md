@@ -1,4 +1,10 @@
-# Node-Jobs
+# Node-Jobs-Scheduler
+
+## Features
+
+- Support scheduling tasks with longer delay than supported by `setTimeout()`.
+- Manage all scheduled tasks through a built-in scheduler.
+- Implementation includes a priority queue algorithm to make scheduling operation faster.
 
 ## A Typescript library to schedule tasks (i.e. functions) to be run at future time.
 

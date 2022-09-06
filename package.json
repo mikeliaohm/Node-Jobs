@@ -1,5 +1,5 @@
 {
-  "name": "node-jobs",
+  "name": "node-jobs-scheduler",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
@@ -7,6 +7,10 @@
     "test": "jest --config jestconfig.json",
     "build": "tsc",
     "ui": "tsc ui/server.ts && NODE_ENV=debug node ui/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikeliaohm/Node-Jobs.git"
   },
   "keywords": [],
   "author": "",
